@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 function AppLayout() {
   return (
     <div className="bg-slate-500 h-screen w-screen flex">
-      <div className="border w-1/4 h-5/6 m-auto" style={{background: "linear-gradient(11.1deg, #1A2440 1.16%, #313C5C 100.88%)"}}>
+      <div className="w-1/4 h-5/6 m-auto" style={{background: "linear-gradient(11.1deg, #1A2440 1.16%, #313C5C 100.88%)"}}>
         <Outlet />
       </div>
     </div>

@@ -8,7 +8,7 @@ const Card = ({position="horizontal"}: { position?: "horizontal" | "vertical" })
             }
         }
     }
-  return <div className={`rounded-2xl ${position==="horizontal" ? "h-48" : "20"} p-4`} style={{backgroundImage: `url(${BlueBg})`}}>
+  return <div className={`rounded-2xl ${position==="horizontal" ? "h-48" : "20"} p-4`} style={{backgroundImage: `url(${BlueBg})`, backgroundRepeat: "no-repeat", minWidth: "100%"}}>
     Card
     </div>;
 };
