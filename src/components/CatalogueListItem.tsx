@@ -41,7 +41,7 @@ const CatalogueListItem: React.FC<CatalogueListItemProps> = ({
           </div>
         </div>
         <div className="flex">
-          <button className={`border border-${paid ? "gray-700" : "[#7295FB]"} h-12 w-16 text-${paid ? "gray-700" : "[#7295FB]"} rounded-2xl my-auto`}>
+          <button className={`border ${paid ? "border-gray-700" : "border-[#7295FB]"} h-12 w-16 ${paid ? "text-gray-700" : "text-[#7295FB]"} rounded-2xl my-auto`}>
             Pay
           </button>
         </div>

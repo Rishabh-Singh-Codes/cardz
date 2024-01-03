@@ -1,28 +1,59 @@
 import BlueBg from "../assets/blue-bg.svg";
+import OrangeBg from "../assets/orangeBg.svg";
 import wifi from "../assets/wifi.svg";
 import mastercard from "../assets/mastercard.svg";
+import { useState } from "react";
 
-const Card = ({
+interface CardProps {
+    position?: String; 
+    cardData: {
+        bankName: String;
+        cardNumber: String;
+        cvv: String;
+        date: String;
+        theme: String;
+    }
+  }
+
+const Card: React.FC<CardProps> = ({
   position = "horizontal",
-}: {
-  position?: "horizontal" | "vertical";
+  cardData
 }) => {
+    const [showCVV, setShowCVV] = useState(false);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setShowCVV(true);
+  };
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setShowCVV(false);
+  };
+  const handleMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setShowCVV(false);
+  };
+
+  const {bankName, cardNumber, cvv, date, theme} = cardData;
+
   return (
     <div
-      className={`rounded-2xl ${position === "horizontal" ? "h-48" : "20"} p-4`}
+      className={`rounded-2xl ${position === "horizontal" ? "h-48" : "20"} ${showCVV === false && "p-4"}`}
       style={{
-        backgroundImage: `url(${BlueBg})`,
-        backgroundRepeat: "no-repeat",
+        backgroundImage: `url(${theme==="blue" ? BlueBg : OrangeBg})`,
+        // backgroundRepeat: "no-repeat",
+        backgroundRepeat: `${theme==="orange" ? "repeat": "no-repeat"}`,
         minWidth: "100%",
       }}
+      onMouseDown={(e) => handleMouseDown(e)}
+      onMouseUp={(e) => handleMouseUp(e)}
+      onMouseOut={(e) => handleMouseOut(e)}
+    //   onMouse
     >
-      <div className="flex flex-col">
+      {showCVV === false ? <div className="flex flex-col">
         <div className="flex flex-row mb-3">
           <h2 className="text-white text-2xl border-r-2 pr-2 text-center align-middle">
             CB
           </h2>
           <h2 className="text-white/60 text-lg pl-2 text-center align-middle h-fit">
-            Universal Bank
+            {bankName}
           </h2>
         </div>
         <div className="flex flex-row justify-between align-middle mb-3">
@@ -33,18 +64,25 @@ const Card = ({
         </div>
         <div className="flex flex-row justify-between align-middle mb-3">
           <h2 className="text-white text-xl text-center align-middle">
-            5489 7452 5726 9827
+            {cardNumber}
           </h2>
         </div>
         <div className="flex flex-row justify-between align-middle">
           <h2 className="text-white/60 text-sm text-center align-middle">
-            04/24
+            {date}
           </h2>
           <h2 className="text-white text-sm text-center flex align-middle">
-            <img src={mastercard} alt="wifi"/>
+            <img src={mastercard} alt="wifi" />
           </h2>
         </div>
+      </div>: <div className="flex flex-col">
+        <div className="w-full h-12 mt-6 mb-5 bg-black/60">
+        </div>
+        <div className="w-[90%] m-auto px-3 h-10 bg-white/30 rounded-md flex flex-row-reverse text-2xl text-white">
+            <span className="my-auto">{cvv}</span>
+        </div>
       </div>
+      }
     </div>
   );
 };

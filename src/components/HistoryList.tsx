@@ -1,9 +1,13 @@
 import historyList from "../mock-data/historyList.json";
 import HistoryListItem from "./HistoryListItem";
 
-const HistoryList = () => {
+interface HistoryListProps {
+  page?: String;
+}
+
+const HistoryList: React.FC<HistoryListProps> = ({page}) => {
   return (
-    <div className="overflow-y-scroll px-4 h-[80%]">
+    <div className={`overflow-y-scroll ${page==="card" ? "h-[30%]" : "h-[80%] px-4"}`}>
       {historyList.data.map((day) => (
         <div key={day.dayId} className="flex flex-row mb-3">
           <div className="text-white w-full">
