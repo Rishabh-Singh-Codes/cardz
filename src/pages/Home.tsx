@@ -1,17 +1,25 @@
+import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import Navbar from "../components/Navbar";
+import CardDetails from "./CardDetails";
 
 const Home = () => {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-grow">
+      <div className="flex-grow p-4">
+        <div className="text-white">
         Home
-        <div className="px-3">
-        <Card />
+        <Link to="/card">card</Link>
         </div>
       </div>
       <Navbar />
     </div>
+    // <div className="flex flex-col h-full">
+    //   <div className="flex-grow px-4 pt-4 mb-3">
+    //     <CardDetails />
+    //   </div>
+    //   <Navbar />
+    // </div>
   );
 };
 

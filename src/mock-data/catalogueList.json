@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "Mobile",
+            "amount": "34.00",
+            "category": "mobile",
+            "paid": false
+        },
+        {
+            "id": 2,
+            "title": "Internet and TV",
+            "amount": "21.00",
+            "category": "internet",
+            "paid": false
+        },
+        {
+            "id": 3,
+            "title": "Traffic fines",
+            "amount": "1221.00",
+            "category": "traffic",
+            "paid": false
+        },
+        {
+            "id": 4,
+            "title": "Housing Services",
+            "amount": "0.00",
+            "category": "housing",
+            "paid": true
+        },
+        {
+            "id": 5,
+            "title": "Utility Payment",
+            "amount": "442.00",
+            "category": "utility",
+            "paid": false
+        }
+    ]
+}
