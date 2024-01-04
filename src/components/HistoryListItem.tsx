@@ -8,7 +8,11 @@ interface HistoryListItemProps {
         amount: String;
         category: String;
         receiver: String;
-    }
+        accNo?: String;
+        time?: String;
+    },
+    showData?: Boolean;
+    setShowIndex?: Function;
   }
 
 interface ImageConfig {
@@ -16,16 +20,23 @@ interface ImageConfig {
   }
 
 const HistoryListItem: React.FC<HistoryListItemProps> = ({
-    itemData: {title, amount, category, receiver}
+    itemData: {title, amount, category, receiver, accNo, time}, showData, setShowIndex
   }) => {
+
+
     const imageConfig: ImageConfig = {
         cardTransactions: cardHist,
         musicTransactions: musicHist,
         travelTransactions: travelHist,
       };
+
+      const showCompleteData = () => {
+        setShowIndex && setShowIndex();
+      }
+ 
   return (
     <>
-      <div className="w-full flex flex-row align-middle justify-between">
+      <div className="w-full flex flex-row align-middle justify-between" onClick={showCompleteData}>
         <div className="flex flex-row align-middle justify-start">
           <div className="flex align-middle">
             <img src={imageConfig[`${category}`]} alt="" />
@@ -33,6 +44,8 @@ const HistoryListItem: React.FC<HistoryListItemProps> = ({
           <div className="flex flex-col align-middle my-auto">
             <span className="text-white">{title}</span>
             <span className="text-xs text-white/60">{receiver}</span>
+            {showData && <span className="text-xs text-white/60">{accNo}</span>}
+            {showData && <span className="text-xs text-white/60">{time}</span>}
           </div>
         </div>
         <div className="flex text-white align-middle my-auto">

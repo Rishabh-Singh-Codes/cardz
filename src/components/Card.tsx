@@ -1,5 +1,7 @@
 import BlueBg from "../assets/blue-bg.svg";
 import OrangeBg from "../assets/orangeBg.svg";
+// import OrangeBg from "../assets/orangeBg.jpeg";
+// import OrangeBg from "../assets/orangeBg.png";
 import wifi from "../assets/wifi.svg";
 import mastercard from "../assets/mastercard.svg";
 import { useState } from "react";
@@ -22,30 +24,29 @@ const Card: React.FC<CardProps> = ({
     const [showCVV, setShowCVV] = useState(false);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setShowCVV(true);
+    position === "horizontal" && setShowCVV(true);
   };
   const handleMouseUp = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setShowCVV(false);
+    position === "horizontal" && setShowCVV(false);
   };
   const handleMouseOut = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setShowCVV(false);
+    position === "horizontal" && setShowCVV(false);
   };
 
   const {bankName, cardNumber, cvv, date, theme} = cardData;
 
   return (
     <div
-      className={`rounded-2xl ${position === "horizontal" ? "h-48" : "20"} ${showCVV === false && "p-4"}`}
+      className={`rounded-2xl h-48 ${showCVV === false && "p-4"}`}
       style={{
         backgroundImage: `url(${theme==="blue" ? BlueBg : OrangeBg})`,
-        // backgroundRepeat: "no-repeat",
-        backgroundRepeat: `${theme==="orange" ? "repeat": "no-repeat"}`,
+        backgroundRepeat: "no-repeat",
+        // backgroundRepeat: `${theme==="orange" ? "repeat": "no-repeat"}`,
         minWidth: "100%",
       }}
       onMouseDown={(e) => handleMouseDown(e)}
       onMouseUp={(e) => handleMouseUp(e)}
       onMouseOut={(e) => handleMouseOut(e)}
-    //   onMouse
     >
       {showCVV === false ? <div className="flex flex-col">
         <div className="flex flex-row mb-3">

@@ -9,7 +9,7 @@ const CardDetails = () => {
     let { state } = useLocation();
     const {cardName, balance, ...cardData} = state;
   return (
-    <div className="flex flex-col h-full px-4 py-2">
+    <div className="flex flex-col h-full px-8 md:px-4 py-2">
       <div className="mt-1 mb-3">
         <Link to="/">
           <img src={backBtn} alt="Home" />

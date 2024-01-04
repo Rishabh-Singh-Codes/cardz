@@ -7,7 +7,7 @@
       "cardNumber": "5489 7452 5726 9827",
       "cvv": "123",
       "date": "04/24",
-      "balance": "$2,748.00",
+      "balance": "$2,748.03",
       "theme": "blue"
     },
     {
@@ -17,7 +17,7 @@
       "cardNumber": "7452 9827 5489 5726",
       "cvv": "789",
       "date": "02/25",
-      "balance": "$8,321.00",
+      "balance": "$8,321.40",
       "theme": "orange"
     }
   ]
