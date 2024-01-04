@@ -19,6 +19,16 @@
       "date": "02/25",
       "balance": "$8,321.40",
       "theme": "orange"
-    }
+    },
+    {
+        "id": 3,
+        "cardName": "Travel Card",
+        "bankName": "Deutsche Bank",
+        "cardNumber": "9827 7452 5489 5726",
+        "cvv": "456",
+        "date": "02/25",
+        "balance": "$8,321.40",
+        "theme": "blue"
+      }
   ]
 }

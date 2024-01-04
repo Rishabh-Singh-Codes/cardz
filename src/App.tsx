@@ -1,9 +1,15 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
-import CardDetails from "./pages/CardDetails";
-import Catalogue from "./pages/Catalogue";
-import History from "./pages/History";
+// import CardDetails from "./pages/CardDetails";
+// import Catalogue from "./pages/Catalogue";
+// import History from "./pages/History";
 import Home from "./pages/Home";
+import Splash from "./pages/Splash";
+
+const CardDetails = lazy(() => import("./pages/CardDetails"));
+const Catalogue = lazy(() => import("./pages/Catalogue"));
+const History = lazy(() => import("./pages/History"));
 
 function AppLayout() {
   return (
@@ -26,15 +32,29 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/card",
-        element: <CardDetails />,
+        // element: <CardDetails />,
+        element: (
+          <Suspense fallback={<Splash />}>
+            <CardDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/catalogue",
-        element: <Catalogue />,
+        element: (
+          <Suspense fallback={<Splash />}>
+            <Catalogue />
+          </Suspense>
+        ),
       },
       {
         path: "/history",
-        element: <History />,
+        // element: <History />,
+        element: (
+          <Suspense fallback={<Splash />}>
+            <History />
+          </Suspense>
+        ),
       },
     ],
   },
