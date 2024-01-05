@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Cardz",
+  "name": "Cardz: Manage all your cards data at one place.",
   "icons": [
     {
       "src": "favicon.ico",
