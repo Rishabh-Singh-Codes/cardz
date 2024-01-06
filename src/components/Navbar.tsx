@@ -5,11 +5,15 @@ import Menu from "../assets/Menu.svg";
 import HomeSelected from "../assets/HomeSelected.svg";
 import ScanSelected from "../assets/ScanSelected.svg";
 import HistorySelected from "../assets/HistorySelected.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const location = useLocation();
-  const { pathname } = location;
+
+  const pathname = window.location.pathname;
+
+  const getIconSource = (path: string, selectedIcon: string, unselectedIcon: string) => {
+    return pathname === path ? selectedIcon : unselectedIcon;
+  };
 
   return (
     <div
@@ -20,9 +24,9 @@ const Navbar = () => {
       }}
     >
       <div className="h-16 w-full flex justify-between">
-        <Link to="/"><img src={pathname === "/" ? HomeSelected : Home} alt="Home" /></Link>
-        <Link to="/catalogue"><img src={pathname === "/catalogue" ? ScanSelected : Scan} alt="Scan" /></Link>
-        <Link to="/history"><img src={pathname === "/history" ? HistorySelected : History} alt="History" /></Link>
+        <Link to="/"><img src={getIconSource("/", HomeSelected, Home)} alt="Home" /></Link>
+        <Link to="/catalogue"><img src={getIconSource("/catalogue", ScanSelected, Scan)} alt="catalogue" /></Link>
+        <Link to="/history"><img src={getIconSource("/history", HistorySelected, History)} alt="History" /></Link>
         <img src={Menu} alt="Menu" />
       </div>
     </div>
